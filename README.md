@@ -1,6 +1,6 @@
 ![Header](img/18ef6e772c3889d018783fc15674484a.jpg)
 
-<h1 align="center">UR WELCOME ALL</h1>
+<h1 align="center"> UR WELCOME ALL</h1>
 <h1 align="center">MY NAME : XLILNYX
 LEADER LEZARD</h1>
 <h3 align="center">MAHASISWA TEKNIK</h3>
@@ -77,7 +77,7 @@ LEADER LEZARD</h1>
 
 <br clear="both">
 
-<img src="https://files.catbox.moe/43qj22.jpg" alt="quoted mindset animation" />
+<img src="https://files.catbox.moe/zvf5j8.jpg" alt="quoted mindset animation" />
 
 > "jika kau tak sanggup
 menahan lelahnya belajar
