@@ -1,5 +1,16 @@
 ![Header](https://media.tenor.com/iVCiM9W7cvYAAAAd/welcome.gif)
 
+---
+
+###  PLAY MY SONG PROJECT BOT
+<p align="center">
+  <a href="https://files.catbox.moe/6trttu.m4a" target="_blank">
+    <img src="https://img.shields.io/badge/%20Play%20My%20Project%20Song-FF0000?style=for-the-badge&logo=youtube&logoColor=white" />
+  </a>
+</p>
+
+---
+
 ![Header](img/18ef6e772c3889d018783fc15674484a.jpg)
 
 <h1 align="center">UR WELCOME ALL</h1>
