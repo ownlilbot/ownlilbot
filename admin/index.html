@@ -2,42 +2,158 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <title>Bot Control Panel</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>XLILNYX SYSTEM</title>
   <style>
-    body { font-family: Arial; background: #111; color: #eee; text-align: center; padding: 30px; }
-    input, button { padding: 8px; margin: 5px; border-radius: 6px; border: none; }
-    button { cursor: pointer; background: #1e90ff; color: #fff; }
-    .off { background: #ff4040; }
+    :root {
+      --bg: #0d1117;
+      --card: #161b22;
+      --text: #e6edf3;
+      --accent: #1e90ff;
+      --danger: #ff4040;
+      --radius: 10px;
+    }
+    * { box-sizing: border-box; }
+    body {
+      font-family: "Poppins", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .panel {
+      background: var(--card);
+      padding: 30px;
+      border-radius: var(--radius);
+      width: 90%;
+      max-width: 500px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+      text-align: center;
+      animation: fadeIn 0.6s ease;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    h1 {
+      margin-bottom: 10px;
+      color: var(--accent);
+      font-size: 1.5em;
+    }
+    .avatar {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 15px;
+      border: 3px solid var(--accent);
+    }
+    input {
+      width: 90%;
+      max-width: 350px;
+      padding: 10px;
+      margin: 7px 0;
+      border: 1px solid #222;
+      border-radius: var(--radius);
+      background: #0f141a;
+      color: var(--text);
+      text-align: center;
+      font-size: 14px;
+      outline: none;
+      transition: 0.2s ease;
+    }
+    input:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 5px var(--accent);
+    }
+    .buttons { margin-top: 15px; }
+    button {
+      border: none;
+      border-radius: var(--radius);
+      padding: 10px 20px;
+      margin: 5px;
+      font-size: 15px;
+      cursor: pointer;
+      transition: 0.2s;
+      color: white;
+      font-weight: bold;
+    }
+    button:hover { transform: scale(1.05); opacity: 0.9; }
+    .on { background: var(--accent); }
+    .off { background: var(--danger); }
+    .music { background: #3cb371; }
+    pre {
+      background: #0f141a;
+      border-radius: var(--radius);
+      padding: 15px;
+      text-align: left;
+      margin-top: 20px;
+      color: #c9d1d9;
+      font-size: 13px;
+      overflow-x: auto;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+    }
+    footer {
+      margin-top: 25px;
+      font-size: 12px;
+      color: #888;
+    }
   </style>
 </head>
 <body>
-  <h1>🧩 XLILNYX BOT CONTROL</h1>
+  <div class="panel">
+    <img src="https://files.catbox.moe/bpobft.jpg" alt="Avatar" class="avatar">
+    <h1>XLILNYX BOT CONTROL</h1>
+    <p>Masukkan API Key kamu:</p>
+    <input type="password" id="key" placeholder="OWNER_API_KEY">
+    <p>Alasan (opsional):</p>
+    <input id="reason" placeholder="Contoh: maintenance">
 
-  <p>Masukkan API Key kamu:</p>
-  <input type="password" id="key" placeholder="OWNER_API_KEY"><br>
+    <div class="buttons">
+      <button class="on" onclick="toggle(true)">🔵 Nyalakan Bot</button>
+      <button class="off" onclick="toggle(false)">🔴 Matikan Bot</button>
+      <button class="music" onclick="playMusic()">🎵 Play Lagu</button>
+    </div>
 
-  <p>Alasan (opsional):</p>
-  <input id="reason" placeholder="Contoh: maintenance"><br>
+    <pre id="output">INITIALIZING ACTION...</pre>
+    <footer>©2025 XLILNYX CONTROL SYSTEM BOT</footer>
 
-  <button onclick="toggle(true)">🔵 Nyalakan Bot</button>
-  <button class="off" onclick="toggle(false)">🔴 Matikan Bot</button>
-
-  <pre id="output"></pre>
+    <audio id="song" src="https://files.catbox.moe/4w8klm.mp3"></audio>
+  </div>
 
   <script>
     async function toggle(enabled) {
       const key = document.getElementById("key").value.trim();
       const reason = document.getElementById("reason").value.trim();
-      const res = await fetch("/api/toggle", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "x-api-key": key
-        },
-        body: JSON.stringify({ enabled, reason })
-      });
-      const data = await res.json();
-      document.getElementById("output").textContent = JSON.stringify(data, null, 2);
+      const output = document.getElementById("output");
+      output.textContent = "⏳ Mengirim permintaan...";
+      try {
+        const res = await fetch("/api/toggle", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "x-api-key": key
+          },
+          body: JSON.stringify({ enabled, reason })
+        });
+        const data = await res.json();
+        output.textContent = JSON.stringify(data, null, 2);
+      } catch (err) {
+        output.textContent = "❌ Gagal terhubung ke server: " + err.message;
+      }
+    }
+
+    function playMusic() {
+      const audio = document.getElementById("song");
+      if (audio.paused) {
+        audio.play();
+      } else {
+        audio.pause();
+      }
     }
   </script>
 </body>
