@@ -1,113 +1,44 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="id">
 <head>
-  <meta charset="utf-8" />
-  <title>Bot Control Admin</title>
+  <meta charset="UTF-8">
+  <title>Bot Control Panel</title>
   <style>
-    body { font-family: Arial, sans-serif; max-width:600px; margin:40px auto; }
-    input, select, button { margin-top:10px; padding:8px; width:100%; }
-    .msg { margin-top:20px; background:#f9f9f9; border:1px solid #ddd; padding:10px; }
+    body { font-family: Arial; background: #111; color: #eee; text-align: center; padding: 30px; }
+    input, button { padding: 8px; margin: 5px; border-radius: 6px; border: none; }
+    button { cursor: pointer; background: #1e90ff; color: #fff; }
+    .off { background: #ff4040; }
   </style>
 </head>
 <body>
-  <h2>Bot Control Panel</h2>
-  <label>API Key</label>
-  <input id="apikey" placeholder="masukkan x-api-key">
+  <h1>🧩 XLILNYX BOT CONTROL</h1>
 
-  <label>Enable?</label>
-  <select id="enabled">
-    <option value="true">true</option>
-    <option value="false">false</option>
-  </select>
+  <p>Masukkan API Key kamu:</p>
+  <input type="password" id="key" placeholder="OWNER_API_KEY"><br>
 
-  <label>Reason</label>
-  <input id="reason" placeholder="alasan (opsional)">
+  <p>Alasan (opsional):</p>
+  <input id="reason" placeholder="Contoh: maintenance"><br>
 
-  <button id="apply">Apply</button>
-  <div class="msg" id="out">Status: —</div>
+  <button onclick="toggle(true)">🔵 Nyalakan Bot</button>
+  <button class="off" onclick="toggle(false)">🔴 Matikan Bot</button>
+
+  <pre id="output"></pre>
 
   <script>
-    const out = document.getElementById("out");
-    const base = "/api/status";
-
-    document.getElementById("apply").onclick = async () => {
-      const key = document.getElementById("apikey").value;
-      const enabled = document.getElementById("enabled").value === "true";
-      const reason = document.getElementById("reason").value;
-      try {
-        const res = await fetch(base, {
-          method: "POST",
-          headers: { "Content-Type": "application/json", "x-api-key": key },
-          body: JSON.stringify({ enabled, reason })
-        });
-        const j = await res.json();
-        out.textContent = JSON.stringify(j);
-      } catch (e) {
-        out.textContent = e.message;
-      }
-    };
-
-    (async () => {
-      const r = await fetch(base);
-      const j = await r.json();
-      out.textContent = "Current: " + JSON.stringify(j);
-    })();
-  </script>
-</body>
-</html><!doctype html>
-<html>
-<head>
-  <meta charset="utf-8" />
-  <title>Bot Control Admin</title>
-  <style>
-    body { font-family: Arial, sans-serif; max-width:600px; margin:40px auto; }
-    input, select, button { margin-top:10px; padding:8px; width:100%; }
-    .msg { margin-top:20px; background:#f9f9f9; border:1px solid #ddd; padding:10px; }
-  </style>
-</head>
-<body>
-  <h2>Bot Control Panel</h2>
-  <label>API Key</label>
-  <input id="apikey" placeholder="masukkan x-api-key">
-
-  <label>Enable?</label>
-  <select id="enabled">
-    <option value="true">true</option>
-    <option value="false">false</option>
-  </select>
-
-  <label>Reason</label>
-  <input id="reason" placeholder="alasan (opsional)">
-
-  <button id="apply">Apply</button>
-  <div class="msg" id="out">Status: —</div>
-
-  <script>
-    const out = document.getElementById("out");
-    const base = "/api/status";
-
-    document.getElementById("apply").onclick = async () => {
-      const key = document.getElementById("apikey").value;
-      const enabled = document.getElementById("enabled").value === "true";
-      const reason = document.getElementById("reason").value;
-      try {
-        const res = await fetch(base, {
-          method: "POST",
-          headers: { "Content-Type": "application/json", "x-api-key": key },
-          body: JSON.stringify({ enabled, reason })
-        });
-        const j = await res.json();
-        out.textContent = JSON.stringify(j);
-      } catch (e) {
-        out.textContent = e.message;
-      }
-    };
-
-    (async () => {
-      const r = await fetch(base);
-      const j = await r.json();
-      out.textContent = "Current: " + JSON.stringify(j);
-    })();
+    async function toggle(enabled) {
+      const key = document.getElementById("key").value.trim();
+      const reason = document.getElementById("reason").value.trim();
+      const res = await fetch("/api/toggle", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "x-api-key": key
+        },
+        body: JSON.stringify({ enabled, reason })
+      });
+      const data = await res.json();
+      document.getElementById("output").textContent = JSON.stringify(data, null, 2);
+    }
   </script>
 </body>
 </html>
