@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Bot Control Panel</title>
+  <style>
+    body { font-family: Arial; background: #111; color: #eee; text-align: center; padding: 30px; }
+    input, button { padding: 8px; margin: 5px; border-radius: 6px; border: none; }
+    button { cursor: pointer; background: #1e90ff; color: #fff; }
+    .off { background: #ff4040; }
+  </style>
+</head>
+<body>
+  <h1>🧩 XLILNYX BOT CONTROL</h1>
+
+  <p>Masukkan API Key kamu:</p>
+  <input type="password" id="key" placeholder="OWNER_API_KEY"><br>
+
+  <p>Alasan (opsional):</p>
+  <input id="reason" placeholder="Contoh: maintenance"><br>
+
+  <button onclick="toggle(true)">🔵 Nyalakan Bot</button>
+  <button class="off" onclick="toggle(false)">🔴 Matikan Bot</button>
+
+  <pre id="output"></pre>
+
+  <script>
+    async function toggle(enabled) {
+      const key = document.getElementById("key").value.trim();
+      const reason = document.getElementById("reason").value.trim();
+      const res = await fetch("/api/toggle", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "x-api-key": key
+        },
+        body: JSON.stringify({ enabled, reason })
+      });
+      const data = await res.json();
+      document.getElementById("output").textContent = JSON.stringify(data, null, 2);
+    }
+  </script>
+</body>
+</html>
