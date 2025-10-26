@@ -1,0 +1,11 @@
+[
+  {
+    "token": "8462618040:AAH-xXnop21CviSuy51Nrrf5fy9D1LrMX2U",
+    "timestamp": "2025-10-26T18:34:47.437Z",
+    "from": 6282298313,
+    "user": {
+      "id": 6282298313,
+      "username": "BY XLILNYX"
+    }
+  }
+]
