@@ -1,160 +1,393 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>XLILNYX SYSTEM</title>
-  <style>
-    :root {
-      --bg: #0d1117;
-      --card: #161b22;
-      --text: #e6edf3;
-      --accent: #1e90ff;
-      --danger: #ff4040;
-      --radius: 10px;
-    }
-    * { box-sizing: border-box; }
-    body {
-      font-family: "Poppins", Arial, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      margin: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-    }
-    .panel {
-      background: var(--card);
-      padding: 30px;
-      border-radius: var(--radius);
-      width: 90%;
-      max-width: 500px;
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-      text-align: center;
-      animation: fadeIn 0.6s ease;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    h1 {
-      margin-bottom: 10px;
-      color: var(--accent);
-      font-size: 1.5em;
-    }
-    .avatar {
-      width: 100px;
-      height: 100px;
-      border-radius: 50%;
-      object-fit: cover;
-      margin-bottom: 15px;
-      border: 3px solid var(--accent);
-    }
-    input {
-      width: 90%;
-      max-width: 350px;
-      padding: 10px;
-      margin: 7px 0;
-      border: 1px solid #222;
-      border-radius: var(--radius);
-      background: #0f141a;
-      color: var(--text);
-      text-align: center;
-      font-size: 14px;
-      outline: none;
-      transition: 0.2s ease;
-    }
-    input:focus {
-      border-color: var(--accent);
-      box-shadow: 0 0 5px var(--accent);
-    }
-    .buttons { margin-top: 15px; }
-    button {
-      border: none;
-      border-radius: var(--radius);
-      padding: 10px 20px;
-      margin: 5px;
-      font-size: 15px;
-      cursor: pointer;
-      transition: 0.2s;
-      color: white;
-      font-weight: bold;
-    }
-    button:hover { transform: scale(1.05); opacity: 0.9; }
-    .on { background: var(--accent); }
-    .off { background: var(--danger); }
-    .music { background: #3cb371; }
-    pre {
-      background: #0f141a;
-      border-radius: var(--radius);
-      padding: 15px;
-      text-align: left;
-      margin-top: 20px;
-      color: #c9d1d9;
-      font-size: 13px;
-      overflow-x: auto;
-      white-space: pre-wrap;
-      word-wrap: break-word;
-    }
-    footer {
-      margin-top: 25px;
-      font-size: 12px;
-      color: #888;
-    }
-  </style>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>XLILNYX Control — Thunder Edition</title>
+<style>
+  :root{
+    --bg:#07080a; --panel:#0f1419; --card:#121619; --accent:#2aa6ff; --danger:#ff4d4d;
+    --muted:#94a3b8;
+  }
+  html,body{height:100%;margin:0;font-family:Inter,ui-sans-serif,system-ui,Arial;}
+  /* fullscreen canvas background */
+  #bg {
+    position:fixed; inset:0; z-index:0; display:block;
+    background: linear-gradient(180deg, #06060a 0%, #0a0d12 100%);
+    -webkit-touch-callout:none; -webkit-user-select:none; user-select:none;
+  }
+
+  /* lightning flash overlay */
+  #flash {
+    position:fixed; inset:0; z-index:1; pointer-events:none; mix-blend-mode:screen;
+  }
+
+  /* container center */
+  .wrap{
+    position:relative; z-index:2; min-height:100vh;
+    display:flex; align-items:center; justify-content:center; padding:24px;
+  }
+
+  /* panel */
+  .panel{
+    width:100%; max-width:520px; background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+    border-radius:14px; padding:22px; box-shadow:0 10px 30px rgba(0,0,0,0.6);
+    border:1px solid rgba(255,255,255,0.03);
+    backdrop-filter: blur(6px);
+  }
+  .top{
+    display:flex; flex-direction:column; align-items:center; gap:6px;
+    margin-bottom:10px;
+  }
+  .avatar{
+    width:96px;height:96px;border-radius:50%;object-fit:cover;border:3px solid var(--accent);
+    box-shadow:0 6px 18px rgba(42,166,255,0.12);
+  }
+  h1{margin:0;color:var(--accent);font-size:20px;letter-spacing:0.8px;}
+  label { font-size:13px;color:var(--muted); margin:12px 0 6px; display:block; text-align:left;}
+  input[type="password"], input[type="text"]{
+    width:100%; padding:10px 12px; border-radius:10px; background: #07090c;
+    border:1px solid rgba(255,255,255,0.03); color:#e6eef8; font-size:14px;
+    outline:none; box-sizing:border-box;
+  }
+  .row { display:flex; gap:10px; margin-top:12px; flex-wrap:wrap; }
+  .btn{
+    flex:1 1 auto; padding:10px 12px; border-radius:10px; border:none; color:#fff;
+    font-weight:700; cursor:pointer; box-shadow: 0 8px 18px rgba(2,6,23,0.45);
+    transition: transform .12s ease, box-shadow .12s ease;
+  }
+  .btn:active{ transform: translateY(1px); }
+  .start{ background: linear-gradient(180deg,var(--accent), #0b86d6); }
+  .kill{ background: linear-gradient(180deg,var(--danger), #e23b3b); }
+  .play{ background: linear-gradient(180deg,#34c77a,#2aa25f); color:#04210d; font-weight:800; }
+
+  .footer{
+    margin-top:16px; padding:12px; border-radius:8px; background: rgba(0,0,0,0.18);
+    color:var(--muted); text-align:center; font-size:13px;
+  }
+
+  pre#output {
+    margin-top:14px; padding:12px; border-radius:8px; background:rgba(0,0,0,0.22);
+    color:#d8e6f6; font-size:13px; min-height:42px; white-space:pre-wrap; word-break:break-word;
+  }
+
+  /* small screens tweaks */
+  @media (max-width:420px){
+    .panel{ padding:18px; border-radius:12px; }
+    .avatar{ width:86px;height:86px; }
+    .row{ flex-direction:column; }
+  }
+</style>
 </head>
 <body>
-  <div class="panel">
-    <img src="https://files.catbox.moe/bpobft.jpg" alt="Avatar" class="avatar">
-    <h1>XLILNYX BOT CONTROL</h1>
-    <p>INPUT YOUR APIKEY:</p>
-    <input type="password" id="key" placeholder="OWNER_API_KEY">
-    <p>FOR WHAT KILLED SYSTEM BOT?:</p>
-    <input id="reason" placeholder="MAINTENANCE">
+  <!-- canvas background -->
+  <canvas id="bg"></canvas>
+  <!-- flash overlay (for lightning bright flashes) -->
+  <canvas id="flash"></canvas>
 
-    <div class="buttons">
-      <button class="on" onclick="toggle(true)">START BOT</button>
-      <button class="off" onclick="toggle(false)">KILLED BOT</button>
-      <button class="music" onclick="playMusic()">PLAY SONG</button>
+  <div class="wrap">
+    <div class="panel" role="region" aria-label="Control Panel">
+      <div class="top">
+        <img class="avatar" id="avatar" src="https://files.catbox.moe/bpobft.jpg" alt="avatar" />
+        <h1>XLILNYX BOT CONTROL</h1>
+      </div>
+
+      <label for="key">INPUT YOUR APIKEY:</label>
+      <input id="key" type="password" placeholder="OWNER_API_KEY" autocomplete="off">
+
+      <label for="reason">FOR WHAT KILLED SYSTEM BOT?:</label>
+      <input id="reason" type="text" placeholder="MAINTENANCE">
+
+      <div class="row" style="margin-top:12px;">
+        <button class="btn start" onclick="toggle(true)">START BOT</button>
+        <button class="btn kill" onclick="toggle(false)">KILLED BOT</button>
+      </div>
+
+      <div class="row" style="margin-top:12px;">
+        <button class="btn play" onclick="playSong()">PLAY SONG</button>
+      </div>
+
+      <pre id="output">    THANKS TO ALL PARTNER LEZARD</pre>
+
+      <div class="footer">©2025 XLILNYX CONTROL SYSTEM BOT</div>
+
+      <!-- audio element (replace src with your mp3) -->
+      <audio id="song" src="https://files.catbox.moe/4w8klm.mp3" preload="none"></audio>
     </div>
-
-    <pre id="output">   THANKS TO ALL PARTNER LEZARD</pre>
-    <footer>©2025 XLILNYX CONTROL SYSTEM BOT</footer>
-
-    <audio id="song" src="https://files.catbox.moe/4w8klm.mp3"></audio>
   </div>
 
-  <script>
-    async function toggle(enabled) {
-      const key = document.getElementById("key").value.trim();
-      const reason = document.getElementById("reason").value.trim();
-      const output = document.getElementById("output");
-      output.textContent = "INITIALIZING SYSTEM KILLED BOT...";
-      try {
-        const res = await fetch("/api/toggle", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "x-api-key": key
-          },
-          body: JSON.stringify({ enabled, reason })
-        });
-        const data = await res.json();
-        output.textContent = JSON.stringify(data, null, 2);
-      } catch (err) {
-        output.textContent = "❌ Gagal terhubung ke server: " + err.message;
+<script>
+/* ============================
+   Background: Particles + Lightning
+   - canvas "#bg" draws large colorful particles (blobs)
+   - canvas "#flash" draws lightning bolts and full-screen flashes
+   - optimized for mobile (cap fps/particles)
+   ============================ */
+
+(() => {
+  const canvas = document.getElementById('bg');
+  const flash = document.getElementById('flash');
+  const ctx = canvas.getContext('2d', { alpha: true });
+  const fctx = flash.getContext('2d', { alpha: true });
+
+  let W = canvas.width = innerWidth;
+  let H = canvas.height = innerHeight;
+  flash.width = W; flash.height = H;
+
+  // Configuration
+  const CONFIG = {
+    particleCount: Math.max(6, Math.floor(W/150)), // fewer on small screens
+    maxSize: Math.min(140, Math.floor(W/6)), // big blobs
+    minSize: Math.min(40, Math.floor(W/20)),
+    speedFactor: 0.2 + Math.min(1.2, W/1000),
+    lightningChance: 0.004, // per frame chance
+    lightningMinInterval: 1500, // ms
+    fpsCap: 60
+  };
+
+  // generate palette
+  const palette = [
+    'rgba(58,255,197,0.12)',
+    'rgba(106,90,255,0.12)',
+    'rgba(255,95,135,0.12)',
+    'rgba(255,210,70,0.10)',
+    'rgba(90,255,220,0.10)'
+  ];
+
+  // Particle class (soft glowing blob)
+  class Particle {
+    constructor(ix){
+      this.reset(ix||0);
+    }
+    reset(i){
+      this.size = rand(CONFIG.minSize, CONFIG.maxSize);
+      this.x = rand(0, W);
+      this.y = rand(H*0.05, H*0.8);
+      // random direction slight upward
+      const angle = rand(-Math.PI/6, Math.PI/6);
+      this.vx = Math.cos(angle) * rand(0.1, 0.6) * CONFIG.speedFactor;
+      this.vy = -Math.abs(Math.sin(angle) * rand(0.05, 0.3) * CONFIG.speedFactor);
+      this.color = palette[i % palette.length];
+      this.alpha = rand(0.25, 0.9);
+      this.offset = Math.random()*1000;
+    }
+    update(dt){
+      this.x += this.vx * dt;
+      this.y += this.vy * dt;
+      // slight horizontal sinus motion
+      this.x += Math.sin((Date.now()+this.offset)/2000 + this.size)*0.05;
+      // wrap around
+      if(this.y + this.size < -100 || this.x < -this.size-50 || this.x > W + this.size + 50){
+        // respawn from bottom
+        this.x = rand(-100, W+100);
+        this.y = H + rand(20, 120);
       }
+    }
+    draw(ctx){
+      // radial gradient soft blob
+      const g = ctx.createRadialGradient(this.x, this.y, this.size*0.05, this.x, this.y, this.size);
+      const col = this.color.replace(/0\.1\d|\d+?\)/, '').slice(0,-1); // hack to keep base
+      g.addColorStop(0, this.color.replace(/0\.\d+\)/, '0.95)')); // center bright
+      g.addColorStop(0.6, this.color.replace(/0\.\d+\)/, '0.25)'));
+      g.addColorStop(1, this.color.replace(/0\.\d+\)/, '0.0)'));
+      ctx.save();
+      ctx.globalCompositeOperation = 'lighter';
+      ctx.globalAlpha = this.alpha;
+      ctx.fillStyle = g;
+      roundRectFill(ctx, this.x - this.size/1.8, this.y - this.size/1.6, this.size*1.2, this.size*1.2, this.size);
+      ctx.restore();
+    }
+  }
+
+  // util
+  function rand(a,b){ return Math.random()*(b-a)+a; }
+  function roundRectFill(c,x,y,w,h,r){
+    c.beginPath();
+    c.moveTo(x+r,y);
+    c.arcTo(x+w,y,x+w,y+h,r);
+    c.arcTo(x+w,y+h,x,y+h,r);
+    c.arcTo(x,y+h,x,y,r);
+    c.arcTo(x,y,x+w,y,r);
+    c.closePath();
+    c.fill();
+  }
+
+  // create particles
+  let particles = [];
+  for(let i=0;i<CONFIG.particleCount;i++) particles.push(new Particle(i));
+
+  // lightning system
+  let lastLightning = 0;
+  function maybeLightning(){
+    const now = performance.now();
+    if (now - lastLightning < CONFIG.lightningMinInterval) return;
+    if (Math.random() < CONFIG.lightningChance){
+      lastLightning = now;
+      triggerLightning();
+    }
+  }
+
+  // create bolt path (polyline with branches)
+  function createBolt(){
+    const startX = rand(0, W);
+    let points = [{x: startX, y: -20}];
+    const segments = Math.floor(rand(6,16));
+    let x = startX, y = -20;
+    for(let i=0;i<segments;i++){
+      x += rand(-W*0.06, W*0.06);
+      y += rand(H*0.05, H*0.12);
+      points.push({x,y});
+      if (y > H*0.9) break;
+    }
+    return points;
+  }
+
+  function drawBolt(points, alpha){
+    fctx.save();
+    fctx.globalCompositeOperation = 'lighter';
+    // glow
+    fctx.lineWidth = 6; fctx.strokeStyle = `rgba(200,230,255,${alpha*0.14})`;
+    fctx.beginPath();
+    fctx.moveTo(points[0].x, points[0].y);
+    for(let p of points) fctx.lineTo(p.x,p.y);
+    fctx.stroke();
+    // inner bright
+    fctx.lineWidth = 2; fctx.strokeStyle = `rgba(245,255,255,${alpha})`;
+    fctx.beginPath();
+    fctx.moveTo(points[0].x, points[0].y);
+    for(let p of points) fctx.lineTo(p.x,p.y);
+    fctx.stroke();
+    fctx.restore();
+  }
+
+  // big flash (white/blue overlay)
+  function flashScreen(strength=1){
+    // strength: 0.0 - 1.0
+    fctx.save();
+    fctx.fillStyle = `rgba(200,230,255,${0.06 * strength})`;
+    fctx.fillRect(0,0,W,H);
+    fctx.restore();
+  }
+
+  // trigger lightning event: multiple bolts + flashes
+  function triggerLightning(){
+    const boltCount = Math.floor(rand(1,3));
+    const bolts = [];
+    for(let i=0;i<boltCount;i++) bolts.push(createBolt());
+    let frame = 0;
+    const total = 18; // frames for animation
+    const id = setInterval(()=>{
+      fctx.clearRect(0,0,W,H);
+      // flash stronger at start
+      const strength = Math.max(0, 1 - (frame/total));
+      if(frame < 3) flashScreen(1.6);
+      else flashScreen(0.28 * (1 - frame/total));
+      for(let b of bolts){
+        drawBolt(b, 0.9 * (1 - frame/total));
+      }
+      frame++;
+      if(frame>total){ clearInterval(id); setTimeout(()=>{ fctx.clearRect(0,0,W,H); }, 20); }
+    }, 16);
+    // small camera shake effect: nudge panel
+    shakePanel();
+  }
+
+  // shake panel briefly
+  function shakePanel(){
+    const el = document.querySelector('.panel');
+    if(!el) return;
+    el.style.transition = 'transform 80ms linear';
+    const s = 8;
+    el.style.transform = `translate(${rand(-s,s)}px, ${rand(-s,s)}px)`;
+    setTimeout(()=>{ el.style.transform = ''; }, 160);
+  }
+
+  // animation loop
+  let lastTime = performance.now();
+  function loop(t){
+    const now = t;
+    const dt = Math.min(60, (now - lastTime)) / (1000/60); // normalized delta
+    lastTime = now;
+
+    // clear and draw background gradient subtle
+    ctx.clearRect(0,0,W,H);
+    // draw soft radial vignette
+    const grad = ctx.createLinearGradient(0,0,0,H);
+    grad.addColorStop(0,'rgba(10,12,16,0.12)');
+    grad.addColorStop(1,'rgba(3,4,7,0.6)');
+    ctx.fillStyle = grad;
+    ctx.fillRect(0,0,W,H);
+
+    // update & draw particles
+    for(let p of particles){
+      p.update(dt);
+      p.draw(ctx);
     }
 
-    function playMusic() {
-      const audio = document.getElementById("song");
-      if (audio.paused) {
-        audio.play();
-      } else {
-        audio.pause();
-      }
-    }
-  </script>
+    // occasionally spawn new particles if count too low (responsive)
+    if(particles.length < CONFIG.particleCount) particles.push(new Particle());
+
+    // maybe lightning
+    if(Math.random() < CONFIG.lightningChance) maybeLightning();
+
+    requestAnimationFrame(loop);
+  }
+
+  // handle resize
+  function onResize(){
+    W = canvas.width = innerWidth;
+    H = canvas.height = innerHeight;
+    flash.width = W; flash.height = H;
+    // adjust particle settings
+    CONFIG.particleCount = Math.max(5, Math.floor(W/150));
+    CONFIG.maxSize = Math.min(140, Math.floor(W/6));
+    CONFIG.minSize = Math.min(40, Math.floor(W/20));
+    // if we need more or fewer particles
+    if(particles.length > CONFIG.particleCount) particles = particles.slice(0, CONFIG.particleCount);
+    else while(particles.length < CONFIG.particleCount) particles.push(new Particle(particles.length));
+  }
+  addEventListener('resize', onResize, { passive:true });
+
+  // start loop
+  requestAnimationFrame(loop);
+
+})();
+
+/* ============================
+   Panel functions (unchanged behavior)
+   - toggle(enabled): POST /api/toggle with x-api-key
+   - playSong() toggles audio
+   ============================ */
+
+async function toggle(enabled){
+  const key = document.getElementById('key').value.trim();
+  const reason = document.getElementById('reason').value.trim();
+  const out = document.getElementById('output');
+  if(!key){ out.textContent = '❗ Masukkan API key dulu.'; return; }
+  out.textContent = '⏳ Mengirim perintah...';
+  try{
+    const r = await fetch('/api/toggle', {
+      method:'POST', headers:{ 'Content-Type':'application/json', 'x-api-key': key },
+      body: JSON.stringify({ enabled, reason })
+    });
+    const j = await r.json();
+    out.textContent = JSON.stringify(j, null, 2);
+  }catch(err){
+    out.textContent = '❌ Gagal: ' + (err.message || err);
+  }
+}
+
+function playSong(){
+  const audio = document.getElementById('song');
+  if(!audio) return;
+  if(audio.paused){
+    audio.play().catch(()=>{ /* autoplay may be blocked */ });
+    document.querySelector('.play').textContent = 'PAUSE SONG';
+  } else {
+    audio.pause();
+    document.querySelector('.play').textContent = 'PLAY SONG';
+  }
+}
+</script>
 </body>
 </html>
