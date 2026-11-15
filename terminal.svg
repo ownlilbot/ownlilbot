@@ -100,7 +100,7 @@
           font-weight="900"
           letter-spacing="7"
           fill="#ff1744"
-          filter="url(#strongGlow)">404 ERROR</text>
+          filter="url(#strongGlow)">XLILNYX OFFICIAL IN HERE</text>
 
     <!-- Main text -->
     <text x="600" y="190" text-anchor="middle"
@@ -110,7 +110,7 @@
           letter-spacing="7"
           fill="url(#red)"
           filter="url(#glow)">
-      404 ERROR
+      XLILNYX OFFICIAL IN HERE
       <animate attributeName="opacity"
                values="1;.75;1;.35;1"
                dur="2.4s" repeatCount="indefinite"/>
@@ -123,7 +123,7 @@
           font-weight="900"
           letter-spacing="7"
           fill="#00eaff" opacity="0">
-      404 ERROR
+      XLILNYX OFFICIAL IN HERE
       <animate attributeName="opacity"
                values="0;0;.9;0;.6;0;0"
                dur="2.2s" repeatCount="indefinite"/>
@@ -140,7 +140,7 @@
           font-weight="900"
           letter-spacing="7"
           fill="#ff003c" opacity="0">
-      404 ERROR
+      XLILNYX OFFICIAL IN HERE
       <animate attributeName="opacity"
                values="0;.8;0;0;.5;0"
                dur="1.7s" repeatCount="indefinite"/>
