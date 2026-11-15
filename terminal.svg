@@ -1,72 +1,90 @@
 
 <svg xmlns="http://www.w3.org/2000/svg" width="1000" height="340" viewBox="0 0 1000 340">
   <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#050b12"/>
-      <stop offset="100%" stop-color="#081722"/>
+    <radialGradient id="bg">
+      <stop offset="0" stop-color="#260811"/>
+      <stop offset="1" stop-color="#030407"/>
+    </radialGradient>
+    <linearGradient id="red">
+      <stop stop-color="#ff1744"/>
+      <stop offset=".5" stop-color="#ff6478"/>
+      <stop offset="1" stop-color="#a00025"/>
     </linearGradient>
-    <linearGradient id="cyan" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0%" stop-color="#00e5ff"/>
-      <stop offset="100%" stop-color="#168cff"/>
-    </linearGradient>
-    <pattern id="grid" width="25" height="25" patternUnits="userSpaceOnUse">
-      <path d="M25 0H0V25" fill="none" stroke="#123344" stroke-width=".6" opacity=".5"/>
+    <pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse">
+      <path d="M30 0H0V30" fill="none" stroke="#651326" opacity=".3"/>
     </pattern>
     <filter id="glow">
-      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feGaussianBlur stdDeviation="7" result="b"/>
       <feMerge>
-        <feMergeNode in="blur"/>
+        <feMergeNode in="b"/>
         <feMergeNode in="SourceGraphic"/>
       </feMerge>
     </filter>
+    <clipPath id="screen">
+      <rect width="1000" height="340" rx="14"/>
+    </clipPath>
   </defs>
 
-  <rect width="1000" height="340" rx="16" fill="url(#bg)"/>
-  <rect width="1000" height="340" rx="16" fill="url(#grid)"/>
-  <rect x="1" y="1" width="998" height="338" rx="15" fill="none" stroke="#087f9b" opacity=".8"/>
+  <g clip-path="url(#screen)">
+    <rect width="1000" height="340" fill="url(#bg)"/>
+    <rect width="1000" height="340" fill="url(#grid)"/>
 
-  <rect x="1" y="1" width="998" height="43" rx="15" fill="#0b1924"/>
-  <path d="M1 44H999" stroke="#12617a" opacity=".8"/>
+    <g stroke="#ff2448" opacity=".3">
+      <path d="M0 65H1000M0 275H1000"/>
+      <path d="M65 0V340M935 0V340"/>
+    </g>
 
-  <circle cx="25" cy="22" r="5" fill="#ff5f57"/>
-  <circle cx="44" cy="22" r="5" fill="#febc2e"/>
-  <circle cx="63" cy="22" r="5" fill="#28c840"/>
+    <text x="500" y="190" text-anchor="middle"
+      font-family="monospace" font-size="112"
+      font-weight="900" letter-spacing="7"
+      fill="#ff1744" filter="url(#glow)">404 ERROR</text>
 
-  <text x="88" y="27" fill="#8da8b8" font-size="12" font-family="monospace">NEXUS TERMINAL — SECURITY INTERFACE</text>
-  <text x="965" y="27" fill="#00e5ff" font-size="11" text-anchor="end" font-family="monospace">ONLINE</text>
+    <text x="500" y="190" text-anchor="middle"
+      font-family="monospace" font-size="112"
+      font-weight="900" letter-spacing="7"
+      fill="#00eaff" opacity="0">
+      404 ERROR
+      <animate attributeName="opacity"
+        values="0;0;.8;0;0" dur="2.8s"
+        repeatCount="indefinite"/>
+      <animateTransform attributeName="transform"
+        type="translate" values="-7 0;7 0;-3 0;0 0"
+        dur="2.8s" repeatCount="indefinite"/>
+    </text>
 
-  <text x="35" y="82" fill="#00e5ff" font-size="12" font-family="monospace" letter-spacing="3">XLILNYX OFFICIAL / SYSTEM CONSOLE</text>
-  <text x="35" y="119" fill="#e8faff" font-size="27" font-weight="bold" font-family="monospace">CYBER TERMINAL</text>
-  <text x="35" y="143" fill="#6f94a8" font-size="12" font-family="monospace">Advanced command-line environment</text>
+    <rect x="-250" y="0" width="220" height="340"
+      fill="#ff2448" opacity=".08">
+      <animate attributeName="x"
+        from="-250" to="1050" dur="4s"
+        repeatCount="indefinite"/>
+    </rect>
 
-  <path d="M35 162H965" stroke="#164456" stroke-width="1"/>
+    <rect x="0" y="0" width="1000" height="2"
+      fill="#ff3658" opacity=".7">
+      <animate attributeName="y"
+        values="-5;345" dur="3.5s"
+        repeatCount="indefinite"/>
+    </rect>
 
-  <text x="35" y="192" fill="#00e5ff" font-size="13" font-family="monospace">root@xlilnyx:~$</text>
-  <text x="180" y="192" fill="#d5e8ef" font-size="13" font-family="monospace">initialize --system nexus</text>
+    <g opacity=".7" fill="#ff2448">
+      <rect x="0" y="105" width="1000" height="1">
+        <animate attributeName="opacity"
+          values=".1;.8;.1" dur="1.3s"
+          repeatCount="indefinite"/>
+      </rect>
+      <rect x="0" y="230" width="1000" height="2">
+        <animate attributeName="opacity"
+          values=".8;.1;.8" dur="1.8s"
+          repeatCount="indefinite"/>
+      </rect>
+    </g>
 
-  <text x="35" y="220" fill="#00e5ff" font-size="13" font-family="monospace">root@xlilnyx:~$</text>
-  <text x="180" y="220" fill="#d5e8ef" font-size="13" font-family="monospace">security --diagnostics</text>
-  <text x="450" y="220" fill="#39d98a" font-size="12" font-family="monospace">[READY]</text>
+    <g stroke="#ff294b" fill="none" opacity=".7">
+      <path d="M90 170H200M800 170H910"/>
+      <path d="M120 155V185M880 155V185"/>
+    </g>
 
-  <text x="35" y="248" fill="#00e5ff" font-size="13" font-family="monospace">root@xlilnyx:~$</text>
-  <text x="180" y="248" fill="#d5e8ef" font-size="13" font-family="monospace">network --status</text>
-  <text x="450" y="248" fill="#39d98a" font-size="12" font-family="monospace">[ACTIVE]</text>
-
-  <text x="35" y="276" fill="#00e5ff" font-size="13" font-family="monospace">root@xlilnyx:~$</text>
-  <text x="180" y="276" fill="#d5e8ef" font-size="13" font-family="monospace">system --verify</text>
-  <text x="450" y="276" fill="#39d98a" font-size="12" font-family="monospace">[COMPLETE]</text>
-
-  <rect x="35" y="296" width="8" height="15" fill="#00e5ff" opacity=".9"/>
-
-  <rect x="700" y="175" width="265" height="125" rx="9" fill="#08141e" stroke="#15536b"/>
-  <text x="720" y="201" fill="#00e5ff" font-size="12" font-family="monospace">SYSTEM INFORMATION</text>
-  <path d="M720 211H945" stroke="#164456"/>
-  <text x="720" y="236" fill="#789aaa" font-size="11" font-family="monospace">ENGINE</text>
-  <text x="945" y="236" fill="#d7f7ff" font-size="11" text-anchor="end" font-family="monospace">NEXUS NEW ERA</text>
-  <text x="720" y="260" fill="#789aaa" font-size="11" font-family="monospace">SECURITY</text>
-  <text x="945" y="260" fill="#39d98a" font-size="11" text-anchor="end" font-family="monospace">STANDBY</text>
-  <text x="720" y="284" fill="#789aaa" font-size="11" font-family="monospace">INTERFACE</text>
-  <text x="945" y="284" fill="#00e5ff" font-size="11" text-anchor="end" font-family="monospace">CONNECTED</text>
-
-  <text x="965" y="324" fill="#42677a" font-size="9" text-anchor="end" font-family="monospace">XLILNYX OFFICIAL • TERMINAL INTERFACE</text>
+    <rect x="1" y="1" width="998" height="338"
+      rx="13" fill="none" stroke="#bd1838"/>
+  </g>
 </svg>
