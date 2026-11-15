@@ -1,0 +1,72 @@
+
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="340" viewBox="0 0 1000 340">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#050b12"/>
+      <stop offset="100%" stop-color="#081722"/>
+    </linearGradient>
+    <linearGradient id="cyan" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#00e5ff"/>
+      <stop offset="100%" stop-color="#168cff"/>
+    </linearGradient>
+    <pattern id="grid" width="25" height="25" patternUnits="userSpaceOnUse">
+      <path d="M25 0H0V25" fill="none" stroke="#123344" stroke-width=".6" opacity=".5"/>
+    </pattern>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <rect width="1000" height="340" rx="16" fill="url(#bg)"/>
+  <rect width="1000" height="340" rx="16" fill="url(#grid)"/>
+  <rect x="1" y="1" width="998" height="338" rx="15" fill="none" stroke="#087f9b" opacity=".8"/>
+
+  <rect x="1" y="1" width="998" height="43" rx="15" fill="#0b1924"/>
+  <path d="M1 44H999" stroke="#12617a" opacity=".8"/>
+
+  <circle cx="25" cy="22" r="5" fill="#ff5f57"/>
+  <circle cx="44" cy="22" r="5" fill="#febc2e"/>
+  <circle cx="63" cy="22" r="5" fill="#28c840"/>
+
+  <text x="88" y="27" fill="#8da8b8" font-size="12" font-family="monospace">NEXUS TERMINAL — SECURITY INTERFACE</text>
+  <text x="965" y="27" fill="#00e5ff" font-size="11" text-anchor="end" font-family="monospace">ONLINE</text>
+
+  <text x="35" y="82" fill="#00e5ff" font-size="12" font-family="monospace" letter-spacing="3">XLILNYX OFFICIAL / SYSTEM CONSOLE</text>
+  <text x="35" y="119" fill="#e8faff" font-size="27" font-weight="bold" font-family="monospace">CYBER TERMINAL</text>
+  <text x="35" y="143" fill="#6f94a8" font-size="12" font-family="monospace">Advanced command-line environment</text>
+
+  <path d="M35 162H965" stroke="#164456" stroke-width="1"/>
+
+  <text x="35" y="192" fill="#00e5ff" font-size="13" font-family="monospace">root@xlilnyx:~$</text>
+  <text x="180" y="192" fill="#d5e8ef" font-size="13" font-family="monospace">initialize --system nexus</text>
+
+  <text x="35" y="220" fill="#00e5ff" font-size="13" font-family="monospace">root@xlilnyx:~$</text>
+  <text x="180" y="220" fill="#d5e8ef" font-size="13" font-family="monospace">security --diagnostics</text>
+  <text x="450" y="220" fill="#39d98a" font-size="12" font-family="monospace">[READY]</text>
+
+  <text x="35" y="248" fill="#00e5ff" font-size="13" font-family="monospace">root@xlilnyx:~$</text>
+  <text x="180" y="248" fill="#d5e8ef" font-size="13" font-family="monospace">network --status</text>
+  <text x="450" y="248" fill="#39d98a" font-size="12" font-family="monospace">[ACTIVE]</text>
+
+  <text x="35" y="276" fill="#00e5ff" font-size="13" font-family="monospace">root@xlilnyx:~$</text>
+  <text x="180" y="276" fill="#d5e8ef" font-size="13" font-family="monospace">system --verify</text>
+  <text x="450" y="276" fill="#39d98a" font-size="12" font-family="monospace">[COMPLETE]</text>
+
+  <rect x="35" y="296" width="8" height="15" fill="#00e5ff" opacity=".9"/>
+
+  <rect x="700" y="175" width="265" height="125" rx="9" fill="#08141e" stroke="#15536b"/>
+  <text x="720" y="201" fill="#00e5ff" font-size="12" font-family="monospace">SYSTEM INFORMATION</text>
+  <path d="M720 211H945" stroke="#164456"/>
+  <text x="720" y="236" fill="#789aaa" font-size="11" font-family="monospace">ENGINE</text>
+  <text x="945" y="236" fill="#d7f7ff" font-size="11" text-anchor="end" font-family="monospace">NEXUS NEW ERA</text>
+  <text x="720" y="260" fill="#789aaa" font-size="11" font-family="monospace">SECURITY</text>
+  <text x="945" y="260" fill="#39d98a" font-size="11" text-anchor="end" font-family="monospace">STANDBY</text>
+  <text x="720" y="284" fill="#789aaa" font-size="11" font-family="monospace">INTERFACE</text>
+  <text x="945" y="284" fill="#00e5ff" font-size="11" text-anchor="end" font-family="monospace">CONNECTED</text>
+
+  <text x="965" y="324" fill="#42677a" font-size="9" text-anchor="end" font-family="monospace">XLILNYX OFFICIAL • TERMINAL INTERFACE</text>
+</svg>
