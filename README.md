@@ -25,13 +25,13 @@
 <h3 align="center"> ( ! ) ᴄᴏɴᴛᴀᴄᴛ ᴍᴇ ( ! ) </h3> 
 
 <p align="center">
-  <a href="https://instagram.com/-" target="_blank">
+  <a href="https://www.instagram.com/xlilnyxofficial" target="_blank">
     <img src="https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white" />
   </a>
-  <a href="mailto:faisalryu58@gmail.com">
+  <a href="mailto:mas.kholil2005@gmail.com">
     <img src="https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white" />
   </a>
-  <a href="https://wa.me/-" target="_blank">
+  <a href="https://wa.me/62816409758" target="_blank">
     <img src="https://img.shields.io/badge/WhatsApp-25D366?style=for-the-badge&logo=whatsapp&logoColor=white" />
   </a>
   <a href="https://facebook.com/-" target="_blank">
