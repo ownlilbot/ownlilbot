@@ -1,0 +1,15 @@
+
+<svg xmlns="http://www.w3.org/2000/svg" width="700" height="290" viewBox="0 0 700 290">
+  <rect width="700" height="290" rx="14" fill="#0d1117"/>
+  <text x="350" y="38" text-anchor="middle" fill="#00D9FF" font-size="19" font-family="Arial" font-weight="bold">PROGRAMMING SKILLS</text>
+  <g font-family="Arial" font-size="14" fill="#e6edf3">
+    <text x="45" y="88">HTML &amp; CSS</text><text x="655" y="88" text-anchor="end">90%</text>
+    <rect x="45" y="100" width="610" height="10" rx="5" fill="#30363d"/><rect x="45" y="100" width="549" height="10" rx="5" fill="#00D9FF"/>
+    <text x="45" y="143">JavaScript</text><text x="655" y="143" text-anchor="end">80%</text>
+    <rect x="45" y="155" width="610" height="10" rx="5" fill="#30363d"/><rect x="45" y="155" width="488" height="10" rx="5" fill="#00D9FF"/>
+    <text x="45" y="198">Python</text><text x="655" y="198" text-anchor="end">75%</text>
+    <rect x="45" y="210" width="610" height="10" rx="5" fill="#30363d"/><rect x="45" y="210" width="457.5" height="10" rx="5" fill="#00D9FF"/>
+    <text x="45" y="253">PHP</text><text x="655" y="253" text-anchor="end">68%</text>
+    <rect x="45" y="265" width="610" height="10" rx="5" fill="#30363d"/><rect x="45" y="265" width="414.8" height="10" rx="5" fill="#00D9FF"/>
+  </g>
+</svg>
