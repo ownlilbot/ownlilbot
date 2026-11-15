@@ -51,11 +51,13 @@
 
 
 <p align="center">
-  <img
-    src="https://raw.githubusercontent.com/ownlilbot/ownlilbot/main/terminal.svg"
-    alt="XLILNYX OFFICIAL IN HERE"
-    width="100%"
-  />
+  <a href="https://ownlilbot.github.io/ownlilbot/error.html">
+    <img
+      src="https://raw.githubusercontent.com/ownlilbot/ownlilbot/main/terminal.svg"
+      alt="XLILNYX OFFICIAL IN HERE"
+      width="100%"
+    />
+  </a>
 </p>
 
 <h3 align="center">
