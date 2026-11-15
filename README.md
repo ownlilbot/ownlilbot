@@ -17,72 +17,12 @@
 
 ---
 
-<h2 align="center">TECHNOLOGY STACK</h2>
-
-<p align="center">
-  <img src="https://skillicons.dev/icons?i=html,css,js,python,php,laravel,mysql,git,github,vscode&theme=dark" alt="Technology Stack"/>
-</p>
-
----
-
-<h2 align="center">SKILL ANALYTICS</h2>
-
 <p align="center">
   <img
     src="https://raw.githubusercontent.com/ownlilbot/ownlilbot/main/skill-statistics.svg"
     width="100%"
     alt="XLILNYX OFFICIAL STATISTIC SKILLS"
   />
-</p>
-
----
-
-<h2 align="center">FEATURED PROJECTS</h2>
-
-<p align="center">
-  <a href="https://github.com/ownlilbot">
-    <img src="https://github-readme-stats.vercel.app/api/pin/?username=ownlilbot&repo=ownlilbot&theme=tokyonight&hide_border=true" alt="Profile Repository"/>
-  </a>
-</p>
-
-<p align="center">
-  <a href="https://github.com/ownlilbot?tab=repositories">
-    <img src="https://img.shields.io/badge/EXPLORE%20ALL%20PROJECTS-181717?style=for-the-badge&logo=github&logoColor=white" alt="Explore Projects"/>
-  </a>
-</p>
-
----
-
-<h2 align="center">GITHUB ANALYTICS</h2>
-
-<p align="center">
-  <img
-    src="https://github-readme-stats.vercel.app/api?username=ownlilbot&show_icons=true&theme=tokyonight&hide_border=true&rank_icon=github"
-    width="100%"
-    alt="GitHub Statistics"
-  />
-</p>
-
-<p align="center">
-  <img
-    src="https://github-readme-stats.vercel.app/api/top-langs/?username=ownlilbot&layout=compact&theme=tokyonight&hide_border=true"
-    width="100%"
-    alt="Most Used Languages"
-  />
-</p>
-
----
-
-<h2 align="center">CURRENTLY LEARNING</h2>
-
-<p align="center">
-  <img src="https://img.shields.io/badge/Backend%20Development-0D1117?style=for-the-badge&logo=serverfault&logoColor=00D9FF"/>
-  <img src="https://img.shields.io/badge/Laravel-0D1117?style=for-the-badge&logo=laravel&logoColor=FF2D20"/>
-  <img src="https://img.shields.io/badge/Artificial%20Intelligence-0D1117?style=for-the-badge&logo=openai&logoColor=white"/>
-</p>
-
-<p align="center">
-  Always learning, building, and improving.
 </p>
 
 ---
@@ -109,10 +49,11 @@
 
 ---
 
+
 <p align="center">
   <img
-    src="https://files.catbox.moe/zvf5j8.jpg"
-    alt="Quoted Mindset"
+    src="https://raw.githubusercontent.com/ownlilbot/ownlilbot/main/terminal.svg"
+    alt="XLILNYX OFFICIAL IN HERE"
     width="100%"
   />
 </p>
@@ -122,12 +63,4 @@
   maka kau harus sanggup menahan perihnya kebodohan."
 </h3>
 
-<p align="center">— XLILNYX</p>
-
 ---
-
-<p align="center">
-  <sub>DESIGNED BY XLILNYX OFFICIAL</sub>
-  <br/>
-  <sub>MY SYSTEM, MY OWN WAY.</sub>
-</p>
