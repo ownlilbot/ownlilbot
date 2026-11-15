@@ -1,0 +1,450 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#030003">
+<title>XLILNYX // FATAL ERROR</title>
+
+<style>
+:root{
+  --red:#ff003c;
+  --darkred:#700019;
+  --white:#f4e9ed;
+  --bg:#030003;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  min-height:100%;
+  background:#030003;
+}
+
+body{
+  min-height:100vh;
+  min-height:100svh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow-x:hidden;
+  overflow-y:auto;
+  padding:20px 10px;
+  background:
+    radial-gradient(
+      ellipse at center,
+      #24000b 0%,
+      #0b0005 45%,
+      #000 100%
+    );
+  font-family:Consolas,Monaco,monospace;
+  animation:screenFlicker 8s infinite;
+}
+
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:5;
+  pointer-events:none;
+  background:repeating-linear-gradient(
+    to bottom,
+    transparent 0px,
+    transparent 2px,
+    #ff003c20 3px,
+    transparent 4px
+  );
+}
+
+body::after{
+  content:"";
+  position:fixed;
+  inset:-100% 0;
+  z-index:6;
+  pointer-events:none;
+  background:linear-gradient(
+    to bottom,
+    transparent 48%,
+    #ff003c30 50%,
+    transparent 52%
+  );
+  animation:scan 3.5s linear infinite;
+}
+
+.noise{
+  position:fixed;
+  inset:0;
+  z-index:4;
+  pointer-events:none;
+  opacity:.12;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.6'/%3E%3C/svg%3E");
+}
+
+/* MAIN - NO TOP/BOTTOM LINES */
+main{
+  width:100%;
+  max-width:1100px;
+  position:relative;
+  text-align:center;
+  padding:45px 8px;
+  background:transparent;
+  border:none;
+  box-shadow:none;
+}
+
+/* REMOVE DECORATIVE CORNERS */
+main::before,
+main::after{
+  display:none;
+  content:none;
+}
+
+.error-code{
+  color:#a00029;
+  font-size:10px;
+  letter-spacing:5px;
+  margin-bottom:28px;
+  animation:blink 1.2s steps(2) infinite;
+}
+
+/* TITLE */
+h1{
+  position:relative;
+  display:block;
+  width:100%;
+  white-space:nowrap;
+  text-align:center;
+  color:var(--white);
+  font-size:clamp(15px,5.8vw,72px);
+  line-height:1.2;
+  font-weight:900;
+  letter-spacing:-1.5px;
+  text-shadow:
+    2px 0 var(--red),
+    -2px 0 #00eaff,
+    0 0 12px var(--red),
+    0 0 40px #ff003c99;
+  animation:glitch 3s infinite;
+}
+
+h1::before,
+h1::after{
+  content:attr(data-text);
+  position:absolute;
+  inset:0;
+  width:100%;
+  white-space:nowrap;
+  overflow:hidden;
+  text-align:center;
+  pointer-events:none;
+}
+
+h1::before{
+  color:#ff003c;
+  clip-path:inset(0 0 65% 0);
+  transform:translateX(-3px);
+  animation:glitchTop 2.2s infinite steps(1);
+}
+
+h1::after{
+  color:#00eaff;
+  clip-path:inset(65% 0 0 0);
+  transform:translateX(3px);
+  animation:glitchBottom 2.8s infinite steps(1);
+}
+
+/* MESSAGE */
+.message{
+  width:100%;
+  max-width:620px;
+  margin:45px auto 0;
+  padding:25px 15px;
+  border:none;
+  background:#080003bb;
+  position:relative;
+  animation:messageFlicker 5s infinite;
+}
+
+/* REMOVE MESSAGE TOP LINE */
+.message::before{
+  display:none;
+  content:none;
+}
+
+.question{
+  color:var(--red);
+  font-size:clamp(15px,3vw,21px);
+  font-weight:bold;
+  letter-spacing:3px;
+  margin-bottom:22px;
+  text-shadow:0 0 15px #ff003c99;
+}
+
+.message p:not(.question):not(.final){
+  color:#a98b95;
+  font-size:clamp(10px,2.3vw,13px);
+  line-height:2.5;
+  letter-spacing:1.5px;
+}
+
+.final{
+  margin-top:22px;
+  color:#ff315b;
+  font-size:clamp(10px,2.4vw,14px);
+  line-height:2.2;
+  letter-spacing:2px;
+  font-weight:bold;
+  text-shadow:0 0 12px #ff003c55;
+}
+
+.bottom-line{
+  margin-top:30px;
+  color:#570019;
+  font-size:9px;
+  letter-spacing:4px;
+}
+
+/* GLITCH LINES */
+.glitch-line{
+  position:fixed;
+  left:0;
+  width:100%;
+  height:2px;
+  background:#ff003c;
+  opacity:0;
+  pointer-events:none;
+  z-index:8;
+  animation:randomLine 5s infinite;
+}
+
+.glitch-line:nth-child(2){
+  animation-delay:1.7s;
+}
+
+.glitch-line:nth-child(3){
+  animation-delay:3.1s;
+}
+
+/* ANIMATIONS */
+@keyframes scan{
+  from{transform:translateY(-50%)}
+  to{transform:translateY(50%)}
+}
+
+@keyframes glitch{
+  0%,89%,93%,100%{transform:translate(0)}
+  90%{transform:translate(-7px,2px) skewX(7deg)}
+  91%{transform:translate(6px,-2px) skewX(-7deg)}
+  92%{transform:translate(-2px,1px)}
+}
+
+@keyframes glitchTop{
+  0%,85%,100%{
+    clip-path:inset(0 0 65% 0);
+    transform:translateX(-2px)
+  }
+  86%{
+    clip-path:inset(10% 0 75% 0);
+    transform:translateX(9px)
+  }
+  88%{
+    clip-path:inset(35% 0 45% 0);
+    transform:translateX(-7px)
+  }
+  90%{
+    clip-path:inset(5% 0 80% 0);
+    transform:translateX(5px)
+  }
+}
+
+@keyframes glitchBottom{
+  0%,84%,100%{
+    clip-path:inset(65% 0 0 0);
+    transform:translateX(2px)
+  }
+  85%{
+    clip-path:inset(75% 0 10% 0);
+    transform:translateX(-9px)
+  }
+  87%{
+    clip-path:inset(60% 0 25% 0);
+    transform:translateX(7px)
+  }
+  89%{
+    clip-path:inset(85% 0 5% 0);
+    transform:translateX(-5px)
+  }
+}
+
+@keyframes blink{
+  50%{opacity:.2}
+}
+
+@keyframes screenFlicker{
+  0%,96%,98%,100%{filter:brightness(1)}
+  97%{filter:brightness(.55)}
+}
+
+@keyframes messageFlicker{
+  0%,94%,96%,100%{opacity:1}
+  95%{opacity:.55}
+}
+
+@keyframes randomLine{
+  0%,90%,100%{top:20%;opacity:0}
+  91%{top:28%;opacity:.7}
+  93%{top:29%;opacity:.15}
+  95%{top:28%;opacity:0}
+}
+
+/* MOBILE */
+@media(max-width:600px){
+  main{
+    padding:35px 5px;
+  }
+
+  h1{
+    font-size:clamp(14px,5.8vw,30px);
+    letter-spacing:-1px;
+  }
+
+  .message{
+    margin-top:35px;
+    padding:22px 10px;
+  }
+
+  .error-code{
+    font-size:9px;
+    letter-spacing:3px;
+  }
+
+  .question{
+    letter-spacing:2px;
+  }
+}
+
+/* ACCESSIBILITY */
+@media(prefers-reduced-motion:reduce){
+  *,
+  *::before,
+  *::after{
+    animation:none!important;
+    scroll-behavior:auto!important;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="noise"></div>
+
+<div class="glitch-line"></div>
+<div class="glitch-line"></div>
+<div class="glitch-line"></div>
+
+<main>
+
+  <div class="error-code">
+    RAMSOMWARE IN HERE
+  </div>
+
+  <h1 data-text="XLILNYX OFFICIAL IN HERE">
+    XLILNYX OFFICIAL IN HERE
+  </h1>
+
+  <section class="message">
+
+    <p class="question">
+      LU MAU NGAPAIN DI SINI IDIOT?
+    </p>
+
+    <p>
+      NYARI APA?<br>
+      NGERASA BISA MASUK SEMBARANGAN?<br>
+      ATAU CUMA PENASARAN SAMA SESUATU<br>
+      YANG BUKAN URUSAN LU?
+    </p>
+
+    <p class="final">
+      TEMPAT YANG LU CARI BUKAN DI SINI<br>
+     PIKIR-PIKIR LAGI DAH RESIKONYA
+    </p>
+
+  </section>
+
+  <div class="bottom-line">
+    ACCESS DENIED
+  </div>
+
+</main>
+
+<!-- BACKGROUND ERROR AUDIO -->
+<audio id="errorSound" preload="auto" loop playsinline>
+  <source
+    src="https://files.catbox.moe/mzhb4p.mp3"
+    type="audio/mpeg"
+  >
+</audio>
+
+<script>
+const errorSound = document.getElementById("errorSound");
+
+errorSound.volume = 0.9;
+
+let soundStarted = false;
+
+async function startErrorSound(){
+  if(soundStarted) return;
+
+  try{
+    await errorSound.play();
+    soundStarted = true;
+  }catch(error){
+    soundStarted = false;
+  }
+}
+
+// AUTOPLAY ATTEMPT
+window.addEventListener("load", startErrorSound);
+
+// BROWSER AUTOPLAY FALLBACK
+document.addEventListener(
+  "pointerdown",
+  startErrorSound,
+  {once:true}
+);
+
+document.addEventListener(
+  "keydown",
+  startErrorSound,
+  {once:true}
+);
+
+// RETRY WHEN RETURNING TO PAGE
+document.addEventListener("visibilitychange",()=>{
+  if(!document.hidden && !soundStarted){
+    startErrorSound();
+  }
+});
+
+// RESET IF AUDIO STOPS
+errorSound.addEventListener("pause",()=>{
+  if(!errorSound.ended){
+    soundStarted = false;
+  }
+});
+
+// HANDLE AUDIO ERRORS
+errorSound.addEventListener("ended",()=>{
+  soundStarted = false;
+});
+</script>
+
+</body>
+</html>
