@@ -51,7 +51,7 @@
 
 
 <p align="center">
-  <a href="https://ownlilbot.github.io/ownlilbot/error.html">
+  <a href="https://ownlilbot.github.io/ownlilbot/error/">
     <img
       src="https://raw.githubusercontent.com/ownlilbot/ownlilbot/main/terminal.svg"
       alt="XLILNYX OFFICIAL IN HERE"
