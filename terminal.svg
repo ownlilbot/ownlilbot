@@ -32,7 +32,7 @@
     </pattern>
 
     <filter id="glow">
-      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feGaussianBlur stdDeviation="7" result="blur"/>
       <feMerge>
         <feMergeNode in="blur"/>
         <feMergeNode in="SourceGraphic"/>
@@ -40,7 +40,7 @@
     </filter>
 
     <filter id="strongGlow">
-      <feGaussianBlur stdDeviation="15" result="blur"/>
+      <feGaussianBlur stdDeviation="13" result="blur"/>
       <feMerge>
         <feMergeNode in="blur"/>
         <feMergeNode in="SourceGraphic"/>
@@ -54,20 +54,20 @@
 
   <g clip-path="url(#screen)">
 
-    <!-- Background -->
+    <!-- BACKGROUND -->
     <rect width="1200" height="340" fill="url(#bg)"/>
     <rect width="1200" height="340" fill="url(#grid)"/>
     <rect width="1200" height="340" fill="url(#scanlines)"/>
 
-    <!-- Red atmospheric glow -->
-    <ellipse cx="600" cy="170" rx="390" ry="115"
-             fill="#ff002e" opacity=".08">
+    <!-- ATMOSPHERIC GLOW -->
+    <ellipse cx="600" cy="170" rx="420" ry="115"
+             fill="#ff002e" opacity=".09">
       <animate attributeName="opacity"
-               values=".04;.13;.05"
+               values=".04;.15;.05"
                dur="1.7s" repeatCount="indefinite"/>
     </ellipse>
 
-    <!-- Distorted background lines -->
+    <!-- BACKGROUND LINES -->
     <g stroke="#ff1744" fill="none" opacity=".35">
       <path d="M0 65H1200M0 275H1200"/>
       <path d="M75 0V340M1125 0V340"/>
@@ -75,118 +75,138 @@
       <path d="M0 220H180M1020 220H1200"/>
     </g>
 
-    <!-- Digital glitch blocks -->
+    <!-- DIGITAL GLITCH BLOCKS -->
     <g fill="#ff1744">
       <rect x="80" y="92" width="95" height="5" opacity=".65">
         <animate attributeName="x"
                  values="80;160;45;80"
                  dur=".8s" repeatCount="indefinite"/>
       </rect>
+
       <rect x="1010" y="245" width="110" height="4" opacity=".55">
         <animate attributeName="x"
                  values="1010;940;1080;1010"
                  dur="1.1s" repeatCount="indefinite"/>
       </rect>
+
       <rect x="230" y="255" width="35" height="7" opacity=".5"/>
       <rect x="930" y="78" width="55" height="5" opacity=".6"/>
       <rect x="160" y="190" width="18" height="3" opacity=".8"/>
       <rect x="1030" y="165" width="25" height="4" opacity=".8"/>
     </g>
 
-    <!-- Main text glow -->
-    <text x="600" y="190" text-anchor="middle"
+    <!-- MAIN TEXT GLOW -->
+    <text x="600" y="190"
+          text-anchor="middle"
           font-family="monospace"
-          font-size="112"
+          font-size="48"
           font-weight="900"
-          letter-spacing="7"
+          letter-spacing="3"
           fill="#ff1744"
           filter="url(#strongGlow)">XLILNYX OFFICIAL IN HERE</text>
 
-    <!-- Main text -->
-    <text x="600" y="190" text-anchor="middle"
+    <!-- MAIN TEXT -->
+    <text x="600" y="190"
+          text-anchor="middle"
           font-family="monospace"
-          font-size="112"
+          font-size="48"
           font-weight="900"
-          letter-spacing="7"
+          letter-spacing="3"
           fill="url(#red)"
           filter="url(#glow)">
       XLILNYX OFFICIAL IN HERE
       <animate attributeName="opacity"
                values="1;.75;1;.35;1"
-               dur="2.4s" repeatCount="indefinite"/>
+               dur="2.4s"
+               repeatCount="indefinite"/>
     </text>
 
-    <!-- Cyan glitch layer -->
-    <text x="600" y="190" text-anchor="middle"
+    <!-- CYAN GLITCH -->
+    <text x="600" y="190"
+          text-anchor="middle"
           font-family="monospace"
-          font-size="112"
+          font-size="48"
           font-weight="900"
-          letter-spacing="7"
-          fill="#00eaff" opacity="0">
+          letter-spacing="3"
+          fill="#00eaff"
+          opacity="0">
       XLILNYX OFFICIAL IN HERE
       <animate attributeName="opacity"
                values="0;0;.9;0;.6;0;0"
-               dur="2.2s" repeatCount="indefinite"/>
+               dur="2.2s"
+               repeatCount="indefinite"/>
       <animateTransform attributeName="transform"
                         type="translate"
                         values="-9 0;8 0;-5 0;0 0"
-                        dur=".35s" repeatCount="indefinite"/>
+                        dur=".35s"
+                        repeatCount="indefinite"/>
     </text>
 
-    <!-- Red glitch layer -->
-    <text x="600" y="190" text-anchor="middle"
+    <!-- RED GLITCH -->
+    <text x="600" y="190"
+          text-anchor="middle"
           font-family="monospace"
-          font-size="112"
+          font-size="48"
           font-weight="900"
-          letter-spacing="7"
-          fill="#ff003c" opacity="0">
+          letter-spacing="3"
+          fill="#ff003c"
+          opacity="0">
       XLILNYX OFFICIAL IN HERE
       <animate attributeName="opacity"
                values="0;.8;0;0;.5;0"
-               dur="1.7s" repeatCount="indefinite"/>
+               dur="1.7s"
+               repeatCount="indefinite"/>
       <animateTransform attributeName="transform"
                         type="translate"
                         values="8 0;-6 0;4 0;0 0"
-                        dur=".4s" repeatCount="indefinite"/>
+                        dur=".4s"
+                        repeatCount="indefinite"/>
     </text>
 
-    <!-- Moving scan beam -->
+    <!-- MOVING SCAN BEAM -->
     <rect x="0" y="-100" width="1200" height="75"
           fill="url(#beam)">
       <animate attributeName="y"
                from="-100" to="380"
-               dur="2.8s" repeatCount="indefinite"/>
+               dur="2.8s"
+               repeatCount="indefinite"/>
     </rect>
 
-    <!-- Fast horizontal interference -->
-    <g fill="#ff3154" opacity=".7">
+    <!-- HORIZONTAL INTERFERENCE -->
+    <g fill="#ff3154">
       <rect x="0" y="105" width="1200" height="2">
         <animate attributeName="opacity"
                  values=".1;.9;.1;0;.7"
-                 dur=".8s" repeatCount="indefinite"/>
+                 dur=".8s"
+                 repeatCount="indefinite"/>
       </rect>
+
       <rect x="0" y="230" width="1200" height="2">
         <animate attributeName="opacity"
                  values=".8;.1;.9;.2"
-                 dur="1.1s" repeatCount="indefinite"/>
+                 dur="1.1s"
+                 repeatCount="indefinite"/>
       </rect>
+
       <rect x="0" y="150" width="1200" height="1">
         <animate attributeName="y"
                  values="150;155;145;150"
-                 dur=".3s" repeatCount="indefinite"/>
+                 dur=".3s"
+                 repeatCount="indefinite"/>
       </rect>
     </g>
 
-    <!-- Screen distortion -->
+    <!-- SCREEN DISTORTION -->
     <g opacity="0">
       <rect x="0" y="135" width="1200" height="24"
             fill="#ff1744"/>
       <animate attributeName="opacity"
                values="0;0;.12;0;0"
-               dur="1.9s" repeatCount="indefinite"/>
+               dur="1.9s"
+               repeatCount="indefinite"/>
     </g>
 
-    <!-- Side warning marks -->
+    <!-- SIDE WARNING MARKS -->
     <g stroke="#ff294b" fill="none" opacity=".85">
       <path d="M90 170H200M1000 170H1110"/>
       <path d="M120 150V190M1080 150V190"/>
@@ -194,28 +214,37 @@
       <path d="M90 255H150M1050 255H1110"/>
     </g>
 
-    <!-- Moving red light -->
-    <circle cy="170" r="4" fill="#ff1744" filter="url(#glow)">
+    <!-- MOVING RED LIGHT -->
+    <circle cy="170" r="4"
+            fill="#ff1744"
+            filter="url(#glow)">
       <animate attributeName="cx"
                values="100;1100;100"
-               dur="4s" repeatCount="indefinite"/>
+               dur="4s"
+               repeatCount="indefinite"/>
     </circle>
 
-    <!-- Flickering screen -->
-    <rect width="1200" height="340" fill="#ff002e" opacity="0">
+    <!-- FLICKERING SCREEN -->
+    <rect width="1200" height="340"
+          fill="#ff002e" opacity="0">
       <animate attributeName="opacity"
                values="0;0;.07;0;0;.12;0"
-               dur="3s" repeatCount="indefinite"/>
+               dur="3s"
+               repeatCount="indefinite"/>
     </rect>
 
-    <!-- Border -->
+    <!-- BORDER -->
     <rect x="1" y="1" width="1198" height="338"
-          rx="13" fill="none"
-          stroke="#bd1838" stroke-width="1.5"/>
+          rx="13"
+          fill="none"
+          stroke="#bd1838"
+          stroke-width="1.5"/>
 
     <rect x="7" y="7" width="1186" height="326"
-          rx="10" fill="none"
-          stroke="#ff1744" stroke-opacity=".15"/>
+          rx="10"
+          fill="none"
+          stroke="#ff1744"
+          stroke-opacity=".15"/>
 
   </g>
 </svg>
