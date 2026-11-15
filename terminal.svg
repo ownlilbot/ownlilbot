@@ -1,250 +1,129 @@
-
-<svg xmlns="http://www.w3.org/2000/svg"
-     width="1200" height="340"
-     viewBox="0 0 1200 340">
-
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800">
   <defs>
-    <radialGradient id="bg" cx="50%" cy="50%" r="75%">
-      <stop offset="0" stop-color="#310713"/>
-      <stop offset=".55" stop-color="#10050b"/>
-      <stop offset="1" stop-color="#020307"/>
+    <radialGradient id="bg">
+      <stop offset="0" stop-color="#260008"/>
+      <stop offset="0.55" stop-color="#100006"/>
+      <stop offset="1" stop-color="#020204"/>
     </radialGradient>
 
     <linearGradient id="red">
-      <stop stop-color="#8b001d"/>
-      <stop offset=".5" stop-color="#ff1744"/>
-      <stop offset="1" stop-color="#ff8191"/>
+      <stop stop-color="#5a0010"/>
+      <stop offset=".5" stop-color="#ff002f"/>
+      <stop offset="1" stop-color="#7a0018"/>
     </linearGradient>
-
-    <linearGradient id="beam" x2="0" y2="1">
-      <stop stop-color="#ff1744" stop-opacity="0"/>
-      <stop offset=".5" stop-color="#ff1744" stop-opacity=".35"/>
-      <stop offset="1" stop-color="#ff1744" stop-opacity="0"/>
-    </linearGradient>
-
-    <pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse">
-      <path d="M30 0H0V30" fill="none"
-            stroke="#8d1630" stroke-opacity=".25"/>
-    </pattern>
-
-    <pattern id="scanlines" width="4" height="5" patternUnits="userSpaceOnUse">
-      <path d="M0 0H4" stroke="#ff3154" stroke-opacity=".12"/>
-    </pattern>
 
     <filter id="glow">
-      <feGaussianBlur stdDeviation="7" result="blur"/>
+      <feGaussianBlur stdDeviation="5" result="blur"/>
       <feMerge>
         <feMergeNode in="blur"/>
         <feMergeNode in="SourceGraphic"/>
       </feMerge>
     </filter>
 
-    <filter id="strongGlow">
-      <feGaussianBlur stdDeviation="13" result="blur"/>
+    <filter id="heavyGlow">
+      <feGaussianBlur stdDeviation="12" result="blur"/>
       <feMerge>
         <feMergeNode in="blur"/>
         <feMergeNode in="SourceGraphic"/>
       </feMerge>
     </filter>
+
+    <pattern id="grid" width="42" height="42" patternUnits="userSpaceOnUse">
+      <path d="M42 0H0V42" fill="none" stroke="#ff123d" stroke-opacity=".09" stroke-width="1"/>
+    </pattern>
+
+    <pattern id="scanlines" width="3" height="6" patternUnits="userSpaceOnUse">
+      <rect width="3" height="2" fill="#ff1a3d" opacity=".12"/>
+    </pattern>
 
     <clipPath id="screen">
-      <rect width="1200" height="340" rx="14"/>
+      <rect x="35" y="35" width="1130" height="730" rx="8"/>
     </clipPath>
   </defs>
 
+  <rect width="1200" height="800" fill="url(#bg)"/>
+  <rect width="1200" height="800" fill="url(#grid)"/>
+
   <g clip-path="url(#screen)">
+    <circle cx="600" cy="400" r="360" fill="#b00025" opacity=".12" filter="url(#heavyGlow)"/>
 
-    <!-- BACKGROUND -->
-    <rect width="1200" height="340" fill="url(#bg)"/>
-    <rect width="1200" height="340" fill="url(#grid)"/>
-    <rect width="1200" height="340" fill="url(#scanlines)"/>
+    <path d="M0 130H1200 M0 670H1200" stroke="#ff003c" opacity=".2"/>
+    <path d="M0 180H1200 M0 620H1200" stroke="#ff003c" opacity=".12"/>
 
-    <!-- ATMOSPHERIC GLOW -->
-    <ellipse cx="600" cy="170" rx="420" ry="115"
-             fill="#ff002e" opacity=".09">
-      <animate attributeName="opacity"
-               values=".04;.15;.05"
-               dur="1.7s" repeatCount="indefinite"/>
-    </ellipse>
-
-    <!-- BACKGROUND LINES -->
-    <g stroke="#ff1744" fill="none" opacity=".35">
-      <path d="M0 65H1200M0 275H1200"/>
-      <path d="M75 0V340M1125 0V340"/>
-      <path d="M0 120H240M960 120H1200"/>
-      <path d="M0 220H180M1020 220H1200"/>
+    <g fill="#ff1744" font-family="monospace" font-weight="bold">
+      <text x="70" y="100" font-size="19" opacity=".8">FATAL_EXCEPTION // SYSTEM_FAILURE</text>
+      <text x="1130" y="100" text-anchor="end" font-size="17" opacity=".65">ERR_0x000F</text>
+      <text x="70" y="710" font-size="16" opacity=".7">CRITICAL ERROR DETECTED</text>
+      <text x="1130" y="710" text-anchor="end" font-size="16" opacity=".7">SYSTEM OFFLINE</text>
     </g>
 
-    <!-- DIGITAL GLITCH BLOCKS -->
-    <g fill="#ff1744">
-      <rect x="80" y="92" width="95" height="5" opacity=".65">
-        <animate attributeName="x"
-                 values="80;160;45;80"
-                 dur=".8s" repeatCount="indefinite"/>
-      </rect>
-
-      <rect x="1010" y="245" width="110" height="4" opacity=".55">
-        <animate attributeName="x"
-                 values="1010;940;1080;1010"
-                 dur="1.1s" repeatCount="indefinite"/>
-      </rect>
-
-      <rect x="230" y="255" width="35" height="7" opacity=".5"/>
-      <rect x="930" y="78" width="55" height="5" opacity=".6"/>
-      <rect x="160" y="190" width="18" height="3" opacity=".8"/>
-      <rect x="1030" y="165" width="25" height="4" opacity=".8"/>
+    <g stroke="#ff1744" fill="none" opacity=".7">
+      <path d="M70 125H260L280 145H390"/>
+      <path d="M1130 125H940L920 145H810"/>
+      <path d="M70 680H260L280 660H390"/>
+      <path d="M1130 680H940L920 660H810"/>
     </g>
 
-    <!-- MAIN TEXT GLOW -->
-    <text x="600" y="190"
-          text-anchor="middle"
-          font-family="monospace"
-          font-size="48"
-          font-weight="900"
-          letter-spacing="3"
-          fill="#ff1744"
-          filter="url(#strongGlow)">XLILNYX OFFICIAL IN HERE</text>
+    <g font-family="monospace" font-weight="bold" text-anchor="middle">
+      <text x="600" y="385" font-size="65" fill="#00eaff" opacity=".75">
+        XLILNYX OFFICIAL IN HERE
+        <animate attributeName="x" values="600;608;590;600" dur=".18s" repeatCount="indefinite"/>
+      </text>
 
-    <!-- MAIN TEXT -->
-    <text x="600" y="190"
-          text-anchor="middle"
-          font-family="monospace"
-          font-size="48"
-          font-weight="900"
-          letter-spacing="3"
-          fill="url(#red)"
-          filter="url(#glow)">
-      XLILNYX OFFICIAL IN HERE
-      <animate attributeName="opacity"
-               values="1;.75;1;.35;1"
-               dur="2.4s"
-               repeatCount="indefinite"/>
-    </text>
+      <text x="600" y="385" font-size="65" fill="#ff003c" opacity=".8">
+        XLILNYX OFFICIAL IN HERE
+        <animate attributeName="x" values="600;590;610;600" dur=".14s" repeatCount="indefinite"/>
+      </text>
 
-    <!-- CYAN GLITCH -->
-    <text x="600" y="190"
-          text-anchor="middle"
-          font-family="monospace"
-          font-size="48"
-          font-weight="900"
-          letter-spacing="3"
-          fill="#00eaff"
-          opacity="0">
-      XLILNYX OFFICIAL IN HERE
-      <animate attributeName="opacity"
-               values="0;0;.9;0;.6;0;0"
-               dur="2.2s"
-               repeatCount="indefinite"/>
-      <animateTransform attributeName="transform"
-                        type="translate"
-                        values="-9 0;8 0;-5 0;0 0"
-                        dur=".35s"
-                        repeatCount="indefinite"/>
-    </text>
+      <text x="600" y="385" font-size="65" fill="#fff0f2" filter="url(#glow)">
+        XLILNYX OFFICIAL IN HERE
+        <animate attributeName="opacity" values="1;1;.45;1;0.8;1" dur="2.4s" repeatCount="indefinite"/>
+      </text>
+    </g>
 
-    <!-- RED GLITCH -->
-    <text x="600" y="190"
-          text-anchor="middle"
-          font-family="monospace"
-          font-size="48"
-          font-weight="900"
-          letter-spacing="3"
-          fill="#ff003c"
-          opacity="0">
-      XLILNYX OFFICIAL IN HERE
-      <animate attributeName="opacity"
-               values="0;.8;0;0;.5;0"
-               dur="1.7s"
-               repeatCount="indefinite"/>
-      <animateTransform attributeName="transform"
-                        type="translate"
-                        values="8 0;-6 0;4 0;0 0"
-                        dur=".4s"
-                        repeatCount="indefinite"/>
-    </text>
+    <g fill="#ff1744" font-family="monospace" font-size="18" font-weight="bold">
+      <text x="600" y="455" text-anchor="middle">[ ACCESS DENIED ]</text>
+      <text x="600" y="490" text-anchor="middle" opacity=".75">SYSTEM INTEGRITY COMPROMISED</text>
+    </g>
 
-    <!-- MOVING SCAN BEAM -->
-    <rect x="0" y="-100" width="1200" height="75"
-          fill="url(#beam)">
-      <animate attributeName="y"
-               from="-100" to="380"
-               dur="2.8s"
-               repeatCount="indefinite"/>
+    <g stroke="#ff1744" stroke-width="2" opacity=".8">
+      <path d="M180 420H370 M830 420H1020"/>
+      <path d="M250 435H410 M790 435H950"/>
+    </g>
+
+    <g fill="#ff1744" opacity=".7">
+      <rect x="80" y="230" width="140" height="4"/>
+      <rect x="980" y="260" width="130" height="4"/>
+      <rect x="120" y="550" width="180" height="3"/>
+      <rect x="900" y="575" width="200" height="3"/>
+    </g>
+
+    <g stroke="#ff003c" opacity=".5">
+      <path d="M0 300H1200 M0 510H1200"/>
+      <path d="M0 302H1200 M0 512H1200" stroke-width="3" opacity=".25"/>
+    </g>
+
+    <rect x="0" y="0" width="1200" height="800" fill="url(#scanlines)"/>
+
+    <rect x="-1200" y="0" width="1200" height="5" fill="#ff1744" opacity=".7">
+      <animate attributeName="x" from="-1200" to="1200" dur="4s" repeatCount="indefinite"/>
     </rect>
 
-    <!-- HORIZONTAL INTERFERENCE -->
-    <g fill="#ff3154">
-      <rect x="0" y="105" width="1200" height="2">
-        <animate attributeName="opacity"
-                 values=".1;.9;.1;0;.7"
-                 dur=".8s"
-                 repeatCount="indefinite"/>
+    <g fill="#ff1744" opacity=".6">
+      <rect x="0" y="350" width="1200" height="3">
+        <animate attributeName="y" values="350;370;345;350" dur=".3s" repeatCount="indefinite"/>
       </rect>
-
-      <rect x="0" y="230" width="1200" height="2">
-        <animate attributeName="opacity"
-                 values=".8;.1;.9;.2"
-                 dur="1.1s"
-                 repeatCount="indefinite"/>
-      </rect>
-
-      <rect x="0" y="150" width="1200" height="1">
-        <animate attributeName="y"
-                 values="150;155;145;150"
-                 dur=".3s"
-                 repeatCount="indefinite"/>
+      <rect x="0" y="395" width="1200" height="2" opacity=".5">
+        <animate attributeName="y" values="395;410;390;395" dur=".22s" repeatCount="indefinite"/>
       </rect>
     </g>
 
-    <!-- SCREEN DISTORTION -->
-    <g opacity="0">
-      <rect x="0" y="135" width="1200" height="24"
-            fill="#ff1744"/>
-      <animate attributeName="opacity"
-               values="0;0;.12;0;0"
-               dur="1.9s"
-               repeatCount="indefinite"/>
+    <g fill="#ff1744" font-family="monospace" font-size="13" opacity=".5">
+      <text x="75" y="755">0xFF 0x00 0xERROR 0x13 0xCRITICAL</text>
+      <text x="1125" y="755" text-anchor="end">CONNECTION LOST // RETRY FAILED</text>
     </g>
-
-    <!-- SIDE WARNING MARKS -->
-    <g stroke="#ff294b" fill="none" opacity=".85">
-      <path d="M90 170H200M1000 170H1110"/>
-      <path d="M120 150V190M1080 150V190"/>
-      <path d="M90 85H150M1050 85H1110"/>
-      <path d="M90 255H150M1050 255H1110"/>
-    </g>
-
-    <!-- MOVING RED LIGHT -->
-    <circle cy="170" r="4"
-            fill="#ff1744"
-            filter="url(#glow)">
-      <animate attributeName="cx"
-               values="100;1100;100"
-               dur="4s"
-               repeatCount="indefinite"/>
-    </circle>
-
-    <!-- FLICKERING SCREEN -->
-    <rect width="1200" height="340"
-          fill="#ff002e" opacity="0">
-      <animate attributeName="opacity"
-               values="0;0;.07;0;0;.12;0"
-               dur="3s"
-               repeatCount="indefinite"/>
-    </rect>
-
-    <!-- BORDER -->
-    <rect x="1" y="1" width="1198" height="338"
-          rx="13"
-          fill="none"
-          stroke="#bd1838"
-          stroke-width="1.5"/>
-
-    <rect x="7" y="7" width="1186" height="326"
-          rx="10"
-          fill="none"
-          stroke="#ff1744"
-          stroke-opacity=".15"/>
-
   </g>
+
+  <rect x="35" y="35" width="1130" height="730" rx="8" fill="none" stroke="#ff1744" stroke-width="2" opacity=".8" filter="url(#glow)"/>
+  <rect x="43" y="43" width="1114" height="714" rx="5" fill="none" stroke="#7a0018" stroke-width="1"/>
 </svg>
