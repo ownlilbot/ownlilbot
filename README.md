@@ -18,7 +18,7 @@
   <img
     src="https://raw.githubusercontent.com/ownlilbot/ownlilbot/main/skill-statistics.svg"
     width="100%"
-    alt="XLILNYX OFFICIAL STATISTICS"
+    alt="XLILNYX OFFICIAL STATISTIC SKILLS"
   />
 </p>
 
