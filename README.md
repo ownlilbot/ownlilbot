@@ -4,11 +4,13 @@
   ALL ABOUT ME
   <br/>
   XLILNYX OFFICIAL
-  <br/>
 </h1>
-  
+
 <h3 align="center">MAHASISWA TEKNIK ELEKTRO</h3>
-<p align="center">ɪ'ᴍ ᴀɴ ɪɴꜰᴏʀᴍᴀᴛɪᴏɴ ᴛᴇᴄʜɴᴏʟᴏɢʏ ꜱᴛᴜᴅᴇɴᴛ ᴡʜᴏ ʟᴏᴠᴇꜱ ᴛɪɴᴋᴇʀɪɴɢ ᴡɪᴛʜ ʙᴀᴄᴋᴇɴᴅꜱ ᴀɴᴅ ᴇxᴘʟᴏʀɪɴɢ ᴛʜᴇ ᴡᴏʀʟᴅ ᴏꜰ ᴀʀᴛɪꜰɪᴄɪᴀʟ ɪɴᴛᴇʟʟɪɢᴇɴᴄᴇ. ᴍʏ ᴘʀɪᴍᴀʀʏ ꜰᴏᴄᴜꜱ ᴄᴜʀʀᴇɴᴛʟʏ ɪꜱ ʙᴀᴄᴋᴇɴᴅ ᴅᴇᴠᴇʟᴏᴘᴍᴇɴᴛ ᴜꜱɪɴɢ ʟᴀʀᴀᴠᴇʟ, ʙᴜᴛ ɪ'ᴍ ᴀʟᴡᴀʏꜱ ᴏᴘᴇɴ ᴛᴏ ʟᴇᴀʀɴɪɴɢ ɴᴇᴡ ᴛʜɪɴɢꜱ ɪɴ ᴛʜᴇ ᴛᴇᴄʜ ᴡᴏʀʟᴅ.</p>
+
+<p align="center">
+  ɪ'ᴍ ᴀɴ ɪɴꜰᴏʀᴍᴀᴛɪᴏɴ ᴛᴇᴄʜɴᴏʟᴏɢʏ ꜱᴛᴜᴅᴇɴᴛ ᴡʜᴏ ʟᴏᴠᴇꜱ ᴛɪɴᴋᴇʀɪɴɢ ᴡɪᴛʜ ʙᴀᴄᴋᴇɴᴅꜱ ᴀɴᴅ ᴇxᴘʟᴏʀɪɴɢ ᴛʜᴇ ᴡᴏʀʟᴅ ᴏꜰ ᴀʀᴛɪꜰɪᴄɪᴀʟ ɪɴᴛᴇʟʟɪɢᴇɴᴄᴇ. ᴍʏ ᴘʀɪᴍᴀʀʏ ꜰᴏᴄᴜꜱ ᴄᴜʀʀᴇɴᴛʟʏ ɪꜱ ʙᴀᴄᴋᴇɴᴅ ᴅᴇᴠᴇʟᴏᴘᴍᴇɴᴛ ᴜꜱɪɴɢ ʟᴀʀᴀᴠᴇʟ, ʙᴜᴛ ɪ'ᴍ ᴀʟᴡᴀʏꜱ ᴏᴘᴇɴ ᴛᴏ ʟᴇᴀʀɴɪɴɢ ɴᴇᴡ ᴛʜɪɴɢꜱ ɪɴ ᴛʜᴇ ᴛᴇᴄʜ ᴡᴏʀʟᴅ.
+</p>
 
 ---
 
@@ -22,7 +24,7 @@
 
 ---
 
-<h3 align="center"> ( ! ) ᴄᴏɴᴛᴀᴄᴛ ᴍᴇ ( ! ) </h3> 
+<h3 align="center">( ! ) ᴄᴏɴᴛᴀᴄᴛ ᴍᴇ ( ! )</h3>
 
 <p align="center">
   <a href="https://www.instagram.com/xlilnyxofficial" target="_blank">
@@ -40,18 +42,21 @@
   <a href="https://t.me/xlilnyx" target="_blank">
     <img src="https://img.shields.io/badge/Telegram-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white" />
   </a>
-  <a href="https://m.me/-" target="_blank">
-    <img src="https://img.shields.io/badge/Messenger-00B2FF?style=for-the-badge&logo=messenger&logoColor=white" />
-  </a>
 </p>
 
 ---
 
-<br clear="both">
+<p align="center">
+  <img
+    src="https://files.catbox.moe/zvf5j8.jpg"
+    alt="Quoted mindset animation"
+    width="100%"
+  />
+</p>
 
-<img src="https://files.catbox.moe/zvf5j8.jpg" alt="quoted mindset animation" />
+<h3 align="center">
+  "Jika kau tak sanggup menahan lelahnya belajar,
+  maka kau harus sanggup menahan perihnya kebodohan."
+</h3>
 
-> "jika kau tak sanggup
-menahan lelahnya belajar
-maka kau harus
-sanggup menahan perihnya kebodohan" ~ xlilnyx
+<p align="center">— XLILNYX</p>
